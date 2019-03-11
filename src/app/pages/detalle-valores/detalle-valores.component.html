@@ -1,0 +1,92 @@
+<nz-card [nzBordered]="true" nzTitle="Lote N°" >
+  <nz-tabset>
+    <nz-tab nzTitle="Emisión">
+
+      <form nz-form [nzLayout]="'inline'" >
+        <nz-form-item>
+          <nz-form-control >
+            <nz-input-group style="padding: 1rem;" >
+              <p>Buscar Valor</p>
+            </nz-input-group>
+          </nz-form-control>
+          <nz-form-control>
+            <nz-input-group >
+              <input nz-input >
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group >
+              <input nz-input type="text" >
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary" >Imprimir</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <label nz-checkbox [(ngModel)]="checked">Seleccionar Todo</label>
+      <nz-table #basicTable [nzData]="listOfData">
+        <thead>
+        <tr>
+          <th>Num_Valor</th>
+          <th>Contribuyente</th>
+          <th>Fecha_Not</th>
+          <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.name}}</td>
+          <td>{{data.age}}</td>
+          <td>{{data.address}}</td>
+          <td>
+            <a>Action 一 {{data.name}}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>Delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+
+    </nz-tab>
+    <nz-tab nzTitle="Notificación">
+
+      <form >
+        <nz-form-item>
+          <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired >Buscar Valor</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzMd]="6" [nzXs]="24">
+            <input nz-input >
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired >Fecha de Notificación</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzMd]="6" [nzXs]="24">
+            <input nz-input >
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired >Notificación Masiva</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzMd]="6" [nzXs]="24">
+            <nz-upload
+              nzAction="https://jsonplaceholder.typicode.com/posts/">
+              <button nz-button>
+                <i nz-icon type="upload"></i><span>Buscar Archivo</span>
+              </button>
+            </nz-upload>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+
+    </nz-tab>
+    <nz-tab nzTitle="Reclamo">
+      Content of Tab Pane 3
+    </nz-tab>
+    <nz-tab nzTitle="Anulado">
+      Content of Tab Pane 3
+    </nz-tab>
+  </nz-tabset>
+</nz-card>

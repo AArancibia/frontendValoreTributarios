@@ -1,0 +1,136 @@
+<div nz-row>
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+    <div>
+      <nz-card [nzBordered]="false" nzTitle="Emision de Valores" ><!-- [nzExtra]="extraTemplate" -->
+        <button nz-button nzType="primary">Nuevo</button>
+        <nz-table #basicTable [nzData]="listOfData">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{data.name}}</td>
+            <td>{{data.age}}</td>
+            <td>{{data.address}}</td>
+            <td>
+              <a>Action 一 {{data.name}}</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a>Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </nz-table>
+      </nz-card>
+    </div>
+    <!--<ng-template #extraTemplate>
+      <a>More</a>
+    </ng-template>-->
+  </div>
+
+  <div nz-col nzXs="24">
+    <nz-divider style="margin-top: 2rem" nzText="With Text"></nz-divider>
+  </div>
+
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+    <div>
+      <nz-card [nzBordered]="false" nzTitle="Nuevo Lote" ><!-- [nzExtra]="extraTemplate" -->
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-label [nzSm]="3" [nzXs]="24" nzRequired nzFor="email">Descripción</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <input nz-input formControlName="email" id="email">
+              <nz-form-explain *ngIf="validateForm.get('email').dirty && validateForm.get('email').errors">The input is not valid E-mail!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="3" [nzXs]="24" nzFor="password" nzRequired>Valor Tributario</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              <!--<input nz-input type="password" id="password" (ngModelChange)="updateConfirmValidator()">-->
+              <nz-select nzShowSearch nzAllowClear  formControlName="password"><!-- [(ngModel)]="selectedValue" -->
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+              </nz-select>
+              <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">Please input your password!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <div nz-col [nzXs]="24">
+              <nz-form-label [nzXs]="3" nzFor="checkPassword" nzRequired>Periodo Inicial</nz-form-label>
+              <nz-form-control [nzXs]="5">
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
+                  <input nz-input type="password" formControlName="checkPassword" id="checkPassword">
+                  <input nz-input type="text">
+                </div>
+              </nz-form-control>
+
+              <nz-form-label [nzXs]="4" nzFor="checkPassword" nzRequired>Periodo Final</nz-form-label>
+              <nz-form-control [nzXs]="5">
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
+                  <input nz-input type="text" >
+                  <input nz-input type="text">
+                </div>
+              </nz-form-control>
+
+            </div>
+
+          </nz-form-item>
+          <nz-form-item>
+
+            <div nz-col [nzXs]="24">
+              <nz-form-label [nzXs]="3" nzFor="checkPassword" nzRequired>Importe Minimo</nz-form-label>
+              <nz-form-control [nzXs]="5">
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
+                  <input nz-input >
+                </div>
+              </nz-form-control>
+
+              <nz-form-label [nzXs]="4" nzFor="checkPassword" nzRequired>Fecha de Venc.</nz-form-label>
+              <nz-form-control [nzXs]="5">
+                <div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
+                  <input nz-input type="text" >
+                </div>
+              </nz-form-control>
+
+            </div>
+
+          </nz-form-item>
+
+          <nz-form-item>
+            <div class="" nz-col [nzXs]="3">
+              <nz-radio-group >
+                <label nz-radio [ngStyle]="style" nzValue="A">Contribuyente</label>
+                <label nz-radio [ngStyle]="style" nzValue="B">Masivo</label>
+              </nz-radio-group>
+            </div>
+            <div class="" nz-col [nzXs]="4">
+              <nz-form-control >
+                <input nz-input >
+              </nz-form-control>
+              <nz-upload
+                nzAction="https://jsonplaceholder.typicode.com/posts/">
+                <button nz-button>
+                  <i nz-icon type="upload"></i><span>Buscar Archivo</span>
+                </button>
+              </nz-upload>
+            </div>
+          </nz-form-item>
+
+          <nz-form-item nz-row style="margin-bottom:8px;">
+            <nz-form-control [nzSpan]="2" [nzOffset]="14">
+              <button nz-button nzType="primary">Generar Valor</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </nz-card>
+    </div>
+    <!--<ng-template #extraTemplate>
+      <a>More</a>
+    </ng-template>-->
+  </div>
+</div>

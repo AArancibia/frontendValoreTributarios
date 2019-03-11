@@ -1,0 +1,44 @@
+<nz-layout class="layout">
+  <app-header></app-header>
+  <nz-layout>
+    <nz-sider [nzWidth]="300" style="background:#fff">
+      <ul nz-menu [nzMode]="'inline'" style="height:100%">
+        <li nz-submenu>
+          <span title><i nz-icon type="user"></i>Generar Valor Tributario</span>
+          <ul>
+            <li routerLink="/emision" nz-menu-item>Interface Valores Tributarios</li>
+            <li routerLink="/detalle" nz-menu-item>Interface detalle de valores generados</li>
+          </ul>
+        </li>
+        <li nz-submenu>
+          <span title><i nz-icon type="laptop"></i>Generar Constancia de Egilibilidad</span>
+          <ul>
+            <li nz-menu-item>Formulario que genere numero de constancia</li>
+          </ul>
+        </li>
+        <li nz-submenu>
+          <span title><i nz-icon type="notification"></i>Generar Constancia de Valor Tributario</span>
+          <ul>
+            <li nz-menu-item>Formulario que transfiera los valores tributarios</li>
+          </ul>
+        </li>
+        <li nz-submenu>
+          <span title><i nz-icon type="notification"></i>Generar Reporte</span>
+          <ul>
+            <li nz-menu-item>option1</li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout ><!-- style="padding:0 24px 24px" -->
+      <!--<nz-breadcrumb style="margin:16px 0;">
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>List</nz-breadcrumb-item>
+        <nz-breadcrumb-item>App</nz-breadcrumb-item>
+      </nz-breadcrumb>-->
+      <nz-content style="background: #ECECEC;padding:30px;">
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
